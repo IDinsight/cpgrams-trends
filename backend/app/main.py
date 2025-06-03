@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from datetime import datetime
 
-from app.routers import charts
+from app.routers import charts, grievances
 
 # Create FastAPI instance
 app = FastAPI(
@@ -25,6 +25,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(charts.router)
+app.include_router(grievances.router)
 
 
 @app.get("/")
@@ -34,6 +35,11 @@ async def root():
         "message": "Welcome to CPGrams Trends API",
         "version": "1.0.0",
         "docs": "/docs",
+        "grievance_data": {
+            "endpoint": "/api/grievances",
+            "health": "/api/grievances/health",
+            "schema": "/api/grievances/schema"
+        },
         "timestamp": datetime.now().isoformat()
     }
 
@@ -60,7 +66,11 @@ async def not_found_handler(request, exc):
                 "/api/health",
                 "/api/charts/sales",
                 "/api/charts/performance",
-                "/api/charts/analytics"
+                "/api/charts/analytics",
+                "/api/grievances",
+                "/api/grievances/by-id",
+                "/api/grievances/schema",
+                "/api/grievances/health"
             ]
         }
     )
