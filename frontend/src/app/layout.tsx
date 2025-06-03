@@ -3,20 +3,21 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff2",
+  src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
 
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff2",
+  src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
 
 export const metadata: Metadata = {
   title: "CPGrams Trends Dashboard",
-  description: "Modern analytics dashboard with interactive charts and real-time insights",
+  description:
+    "Modern analytics dashboard with interactive charts and real-time insights",
   keywords: ["dashboard", "analytics", "charts", "tremor", "nextjs", "fastapi"],
   authors: [{ name: "CPGrams Trends Team" }],
 };
